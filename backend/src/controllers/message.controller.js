@@ -1,6 +1,8 @@
+const { getSocketOfReceiver } = require("../config/socket");
 const { cloudinary } = require("../lib/store");
 const Messages = require("../models/message.model");
 const User = require("../models/user.model");
+const { io } = require("../config/socket");
 
 const sendMessageController = async (req, res) => {
   try {
@@ -26,11 +28,16 @@ const sendMessageController = async (req, res) => {
       image: imageUrl,
     });
 
-    const sentMessage = await message.save();
+    await message.save();
 
     // realtime functionality
 
-    return res.status(200).json(sentMessage);
+    const receiverSocketId = getSocketOfReceiver(receiverId);
+    if (receiverSocketId) {
+      io.to(receiverSocketId).emit("newMessage", message);
+    }
+
+    return res.status(200).json(message);
   } catch (error) {
     console.error("error in sendMessageController", error);
     return res.status(500).json({ message: "Internal server error" });
@@ -40,25 +47,33 @@ const sendMessageController = async (req, res) => {
 const getMessagesController = async (req, res) => {
   try {
     const receiverId = req.params.id;
-    const loggedInUser = req.user;
-    const myId = loggedInUser._id;
-    const allMessage = await Messages.find({
+    const senderId = req.user._id;
+
+    const allMessages = await Messages.find({
       $or: [
-        { senderId: myId, receiverId: receiverId },
-        { senderId: receiverId, receiverId: myId },
+        { senderId: senderId, receiverId: receiverId },
+        { senderId: receiverId, receiverId: senderId },
       ],
+    }).sort({ createdAt: 1 });
+
+    res.status(200).json({
+      success: true,
+      allMessages,
     });
-    res.status(200).json({ allMessage });
   } catch (error) {
-    return res.status(501).json("Internal server error");
+    console.error("Error fetching messages:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Internal server error",
+    });
   }
 };
 
 const getAllUsers = async (req, res) => {
   try {
     const { _id } = req.user;
-    const allUser = await User.find({ _id: { $ne: _id } });
-    res.status(200).json({ allUser });
+    const allUsers = await User.find({ _id: { $ne: _id } });
+    res.status(200).json(allUsers);
   } catch (error) {
     console.log(error);
     return res.status(501).json("Internal server error", error);

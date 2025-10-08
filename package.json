@@ -1,0 +1,22 @@
+{
+  "name": "real_time_chat_app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "build": "npm i --prefix backend && npm i --prefix frontend && npm run build --prefix frontend",
+    "test": "npm run start --prefix backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mallesham2212/real_time_chat_app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mallesham2212/real_time_chat_app/issues"
+  },
+  "homepage": "https://github.com/mallesham2212/real_time_chat_app#readme",
+  "description": ""
+}
