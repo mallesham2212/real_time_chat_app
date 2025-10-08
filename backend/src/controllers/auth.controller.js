@@ -96,7 +96,7 @@ const updateProfile = async (req, res) => {
       { new: true }
     );
 
-    res.status(200).json(updatedUser);
+    res.status(200).json({ updatedUser });
   } catch (error) {
     console.error("error in update profile", error);
     res.status(501).json("Internal server error");

@@ -1,1 +1,7 @@
 @import "tailwindcss";
+@plugin "daisyui";
+@tailwind utilities;
+
+/* #root {
+  padding: 0px 5rem;
+} */
