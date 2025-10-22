@@ -2,7 +2,7 @@ import React from 'react'
 
 const NoChatContainer = () => {
   return (
-    <div>Select user to Chat !!</div>
+    <div>NoChatContainer</div>
   )
 }
 
