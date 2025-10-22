@@ -26,12 +26,9 @@ app.use(
   })
 );
 
-// API routes
 app.use("/api/auth", authRouter);
 app.use("/api/messages", messageRouter);
 
-// Serve frontend in production
-// Serve frontend in production
 if (process.env.NODE_ENV === "production") {
   const frontendPath = path.join(__dirname, "../../frontend/dist");
 
