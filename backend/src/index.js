@@ -31,6 +31,7 @@ app.use("/api/messages", messageRouter);
 
 if (process.env.NODE_ENV === "production") {
   const frontendPath = path.join(__dirname, "../../frontend/dist");
+
   app.use(express.static(frontendPath));
 
   // Handle all unmatched routes (React Router, etc.)
