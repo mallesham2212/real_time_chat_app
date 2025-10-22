@@ -7,8 +7,8 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const { login, isLoggingIn } = useAuthStore(); // Make sure you have a login action in your store
   const [form, setForm] = useState({
-    email: "bindu@gmail.com",
-    password: "123456",
+    email: "",
+    password: "",
   });
   const [error, setError] = useState("");
 
