@@ -107,7 +107,7 @@ const SignUpPage = () => {
       {/* Right - Image */}
       <div className="hidden lg:flex flex-1 bg-gray-100 items-center justify-center">
         <img
-          src="https://source.unsplash.com/600x800/?technology,abstract"
+          src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Fpremium-vector%2Fchat-app-logo-design-template-can-be-used-icon-chat-application-logo_36949664.htm&psig=AOvVaw02nsnnjTjKmdTOSAFlSFJJ&ust=1761195528605000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCLiZ4eGCt5ADFQAAAAAdAAAAABAF"
           alt="signup"
           className="object-cover w-full h-full rounded-l-2xl"
         />
