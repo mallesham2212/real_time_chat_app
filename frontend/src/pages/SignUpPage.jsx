@@ -107,8 +107,8 @@ const SignUpPage = () => {
       {/* Right - Image */}
       <div className="hidden lg:flex flex-1 bg-gray-100 items-center justify-center">
         <img
-          src="https://source.unsplash.com/600x800/?technology,abstract"
-          alt="signup"
+          src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.facebook.com%2FtheChatApp%2F&psig=AOvVaw1muPNPRvFypOP1PiU0lkwQ&ust=1761197749504000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCMjkroSLt5ADFQAAAAAdAAAAABAD"
+          alt="signup-page"
           className="object-cover w-full h-full rounded-l-2xl"
         />
       </div>
